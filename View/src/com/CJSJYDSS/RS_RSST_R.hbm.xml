@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-3-30 21:49:12 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+ <class name="com.CJSJYDSS.RS_RSST_R" table="RS_RSST_R">
+ 
+  <composite-id>
+   <key-property name="resCode" type="string">
+    <column length="8" name="RSCD"/>
+   </key-property>
+   <key-property name="time">
+    <column name="TM"/>
+   </key-property>
+  </composite-id>
+  
+  <property generated="never" lazy="false" name="inQ" type="double">
+   <column name="INQ"/>
+  </property>
+  <property generated="never" lazy="false" name="discQ" type="double">
+   <column name="DCQ"/>
+  </property>
+  <property generated="never" lazy="false" name="Z" type="double">
+   <column name="Z"/>
+  </property>
+  <property generated="never" lazy="false" name="genDiscQ" type="double">
+   <column name="GQ"/>
+  </property>
+  <property generated="never" lazy="false" name="gateDiscQ" type="double">
+   <column name="DQ"/>
+  </property>
+  <property generated="never" lazy="false" name="downZ" type="double">
+   <column name="TWZ"/>
+  </property>
+ </class>
+</hibernate-mapping>

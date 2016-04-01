@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2016-3-30 21:49:12 by Hibernate Tools 3.5.0.Final -->
+<hibernate-mapping>
+ <class name="com.CJSJYDSS.TB_RSBP_B" table="TB_RSBP_B">
+ 
+  <composite-id>
+   <key-property name="resCode">
+    <column length="8" name="RSCD"/>
+   </key-property>
+   <key-property name="resName">
+    <column length="30" name="RSNM"/>
+   </key-property>
+  </composite-id>
+  
+  <property generated="never" lazy="false" name="resType" type="java.lang.String">
+   <column name="RESTYPE"/>
+  </property>
+  <property generated="never" lazy="false" name="damEL" type="double">
+   <column name="DAMEL"/>
+  </property>
+  <property generated="never" lazy="false" name="checkFloodLvl" type="double">
+   <column name="CHECKFLOODLVL"/>
+  </property>
+  <property generated="never" lazy="false" name="designFloodLvl" type="double">
+   <column name="DESIGNFLOODLVL"/>
+  </property>
+  <property generated="never" lazy="false" name="normalZ" type="double">
+   <column name="NORMALZ"/>
+  </property>
+  <property generated="never" lazy="false" name="floodControlZ" type="double">
+   <column name="FLOODCONTROLZ"/>
+  </property>
+  <property generated="never" lazy="false" name="deadZ" type="double">
+   <column name="DEADZ"/>
+  </property>
+  <property generated="never" lazy="false" name="benificialZ" type="double">
+   <column name="BENIFICIALZ"/>
+  </property>
+  <property generated="never" lazy="false" name="totalCap" type="double">
+   <column name="TOTALCAP"/>
+  </property>
+  <property generated="never" lazy="false" name="floodControlCap" type="double">
+   <column name="FLOODCONTROLCAP"/>
+  </property>
+  <property generated="never" lazy="false" name="benificialCap" type="double">
+   <column name="BENIFICIALCAP"/>
+  </property>
+  <property generated="never" lazy="false" name="deadCap" type="double">
+   <column name="DEADCAP"/>
+  </property>
+  <property generated="never" lazy="false" name="designPeakFlood" type="double">
+   <column name="DESIGNPEAKFLOOD"/>
+  </property>
+  <property generated="never" lazy="false" name="checkPeakFlood" type="double">
+   <column name="CHECKPEAKFLOOD"/>
+  </property>
+  <property generated="never" lazy="false" name="downReachMaxQ" type="double">
+   <column name="DOWNREACHMAXQ"/>
+  </property>
+  <property generated="never" lazy="false" name="upperFloodCtrlZ" type="double">
+   <column name="UPPERFLOODCTRLZ"/>
+  </property>
+  <property generated="never" lazy="false" name="controlStaList" type="java.lang.String">
+   <column name="CONTROLSTALIST"/>
+  </property>
+  <property generated="never" lazy="false" name="upConnect" type="java.lang.String">
+   <column name="UPCONNECT"/>
+  </property>
+  <property generated="never" lazy="false" name="upResCode" type="java.lang.String">
+   <column name="UPRESCODE"/>
+  </property>
+  <property generated="never" lazy="false" name="downConnect" type="java.lang.String">
+   <column name="DOWNCONNECT"/>
+  </property>
+  <property generated="never" lazy="false" name="downResCode" type="java.lang.String">
+   <column name="DOWNRESCODE"/>
+  </property>
+  <property generated="never" lazy="false" name="reachCode" type="java.lang.String">
+   <column name="REACHCODE"/>
+  </property>
+  <property generated="never" lazy="false" name="riverName" type="java.lang.String">
+   <column name="RIVERNAME"/>
+  </property>
+  <property generated="never" lazy="false" name="hydName" type="java.lang.String">
+   <column name="HYDNAME"/>
+  </property>
+  <property generated="never" lazy="false" name="basinName" type="java.lang.String">
+   <column name="BASINNAME"/>
+  </property>
+  <property generated="never" lazy="false" name="admDivisionCode" type="java.lang.String">
+   <column name="ADMDIVISIONCODE"/>
+  </property>
+ </class>
+</hibernate-mapping>
