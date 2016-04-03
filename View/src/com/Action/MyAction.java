@@ -42,7 +42,7 @@ public class MyAction extends ActionSupport{
 	{
 		TB_RSBP_B_DAO dao = new TB_RSBP_B_DAO();
 		resNames = dao.getAllNames();
-
+		
 		return SUCCESS;
 	}
 	

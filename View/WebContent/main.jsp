@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=gb2312"
-    pageEncoding="gb2312"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -7,27 +7,25 @@
 <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
 <title>main</title>
 <script src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
-<script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script> 
+<script type="text/javascript" src="highcharts.js"></script> 
 <script type="text/javascript" src="json2.js"></script>
 <script type="text/javascript" src="main.js"></script>
+<script type="text/javascript" src="draw_spline.js"></script>
 
 </head>
 
 <body>
-	<s:checkboxlist name="rsnmlist" list="resNames" label="ÇëÑ¡ÔñË®¿â" 
+	<s:checkboxlist name="rsnmlist" list="resNames" label="è¯·é€‰æ‹©æ°´åº“" 
 	labelposition="top" >
 	</s:checkboxlist>
-	
-	<s:checkboxlist name="tables" list="tablelist" label="ÇëÑ¡ÔñÊı¾İ±í" 
-	labelposition="top" >
+	<br/>
+	<s:checkboxlist name="tables" list="#{'RS_RSST_R':'æ°´åº“å®æ—¶æ•°æ®è¡¨','RS_RSZP_B':'æ°´åº“æ°´ä½åº“å®¹æ›²çº¿è¡¨',
+	'RS_RSSCG_B':'æ°´åº“è°ƒåº¦å›¾è¡¨'}" listKey ="key" listValue="value" label="è¯·é€‰æ‹©æ•°æ®è¡¨" labelposition="top" >
 	</s:checkboxlist>
-	<input id="btn" type="button" value="È·¶¨" />
+	<input id="btn" type="button" value="ç¡®å®š" />
 	
-	<s:checkboxlist name="highchartsconfig" list="configlist" label="ÇëÑ¡ÔñĞèÒªÏÔÊ¾µÄÊı¾İ" 
-	labelposition="top" >
-	</s:checkboxlist>
-	<input id=configbtn type="button" value="È·¶¨" />
+	<div id="container" style="min-width:400px;height:400px">
 	
-	<div id="container" style="min-width:400px;height:400px"></div>
+	</div>
 </body>
 </html>
