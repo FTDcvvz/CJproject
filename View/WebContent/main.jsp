@@ -24,8 +24,6 @@
 	</s:checkboxlist>
 	<input id="btn" type="button" value="确定" />
 	
-	<div id="container" style="min-width:400px;height:400px">
 	
-	</div>
 </body>
 </html>

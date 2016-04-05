@@ -53,7 +53,6 @@ function draw_spline (data,resName,subtitle,divArea){
 				marker: {
                     enabled: false
                 },
-             
 			}
 		},
 		series:data
