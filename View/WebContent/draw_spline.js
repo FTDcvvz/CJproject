@@ -1,6 +1,7 @@
 /**
  * 
  */
+var chart;
 function draw_spline (data,resName,subtitle,divArea){
 	//设置图属性
 	var highchartsOption = {
@@ -58,9 +59,6 @@ function draw_spline (data,resName,subtitle,divArea){
 		series:data
 	};
 	//绘图
-	$(document).ready(function() {
-		var chart;
-		chart= new Highcharts.Chart(highchartsOption);
-	});
+	chart= new Highcharts.Chart(highchartsOption);
 
 }
