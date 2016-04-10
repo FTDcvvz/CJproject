@@ -5,7 +5,7 @@
  * caption：表名
  */
 function spline_table (data,divarea,caption){
-	var $table = $("<table ><caption>"+caption+"</caption></table>");//表
+	var $table = $("<table id="+divarea+"table"+"><caption>"+caption+"</caption></table>");//表
 	$("#"+divarea).append($table);
 	var $thead = $("<thead><tr></tr></thead>");//表头
 	$table.append($thead);

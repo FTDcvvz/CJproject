@@ -127,7 +127,7 @@ function getdata() {
 							//为左边流量图动态建立一个$ldiv，并在其中画图
 							var $ldiv = $("<div id="+resname+"L"+" style='height: 500px; width: 600px'></div>");
 							$subdiv.append($ldiv);
-							draw_spline(rsstdata1,resname,"流量信息图",resname+"L");
+							draw_spline(rsstdata1,resname,"流量信息图",resname+"L","流量");
 							//加入按钮
 							var $lbtn = $("<input id="+resname+"lbtn"+" type='button' value='隐藏表格'></input>");
 							$subdiv.append($lbtn);
@@ -152,7 +152,7 @@ function getdata() {
 							//为右边流量图动态建立一个$rdiv,并在其中画图
 							var $rdiv = $("<div id="+resname+"R"+" style='height: 500px; width: 600px'></div>");
 							$subdiv.append($rdiv);
-							draw_spline(rsstdata2,resname,"水位信息图",resname+"R");	
+							draw_spline(rsstdata2,resname,"水位信息图",resname+"R","水位");	
 							//加入按钮
 							var $rbtn = $("<input type='button' value='隐藏表格'></input>");
 							$subdiv.append($rbtn);
