@@ -3,6 +3,18 @@
  */
 var chart;
 function draw_spline (data,resName,subtitle,divArea,ytitle){
+	//时差调整
+	Highcharts.setOptions({
+		global:{
+			timezoneOffset:-24*60	//一天
+		},
+		lang:{
+			resetZoom:' 重置缩放 ',
+			resetZoomTitle:"重置缩放",
+			months:["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],
+			weekdays: ["星期一", "星期二", "星期三", "星期三", "星期四", "星期五", "星期六","星期天"]
+		}
+	});
 	//设置图属性
 	var highchartsOption = {
 		chart:{
@@ -10,8 +22,20 @@ function draw_spline (data,resName,subtitle,divArea,ytitle){
 			type:'spline',
 			zoomType: 'x',
             panning: true,
-            panKey: 'shift'
-				
+            panKey: 'shift',
+            events:{
+            	selection:function (event){
+            		if(event.xAxis){
+            			value_table(event.xAxis[0].min,event.xAxis[0].max,data,divArea+"vtb");
+            		}
+            			
+            		else
+            			value_table(this.xAxis[0].dataMin,this.xAxis[0].dataMax,data,divArea+"vtb");
+            	}
+            }
+		},
+		credits:{
+			enabled:false
 		},
 		title:{
 			text:resName   
@@ -84,5 +108,7 @@ function draw_spline (data,resName,subtitle,divArea,ytitle){
 		series:data
 	};
 	//绘图
+	
 	chart= new Highcharts.Chart(highchartsOption);
+
 }

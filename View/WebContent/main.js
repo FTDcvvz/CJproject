@@ -12,7 +12,7 @@ var z = [];
 var gq = [];
 var dq = [];
 var twz = [];
-
+//传给chart的table的data格式
 var rsstdata1 = [{    //流量数据表
 	name:'入库流量',
 	data:inq
@@ -42,7 +42,6 @@ $(document).ready(function(){
 });
 
 function getdata() {
-	
 	//获得勾选的水库的名字
 	selectedItems = [];
 	$("input[name='rsnmlist']:checked").each(function(){ 
@@ -62,6 +61,7 @@ function getdata() {
 	 *备注：div层次说明————
 	 *$div:  最外层表级div    $subdiv:水库级div  
 	 *$ldiv：水库div中的左边的div（流量图）   $rdiv：水库div中的右边的div（水位图）
+	 *$lvalueDiv:左边的特征值表             $rvalueDiv：右边的特征值表
 	 *$ltbdiv:左边的表div      $rtbdiv：右边的表div
 	 */
 	for (var i=0;i<selectedtables.length;i++){
@@ -129,7 +129,25 @@ function getdata() {
 							$subdiv.append($ldiv);
 							draw_spline(rsstdata1,resname,"流量信息图",resname+"L","流量");
 							//加入按钮
-							var $lbtn = $("<input id="+resname+"lbtn"+" type='button' value='隐藏表格'></input>");
+							var $lvbtn = $("<input type='button' value='隐藏特征值'></input>");
+							$subdiv.append($lvbtn);
+							//加入统计特征值的表格div并且在其中制表
+							var $lValueDiv = $("<div id="+resname+"Lvtb"+" style='height:300px;width:600px;border:solid'></div>");
+							$lvbtn.after($lValueDiv);
+							//这里的chart变量是从draw_spline.js文件中传来的，里面定义了全局变量chart，每画一次图都会为chart赋值
+							value_table(chart.xAxis[0].dataMin,chart.xAxis[0].dataMax,rsstdata1,resname+"Lvtb");
+							$lvbtn.click(function (){
+								if($(this).attr("value")=="显示特征值"){
+									$(this).next().show();
+									$(this).attr("value","隐藏特征值");
+								}
+								else {
+									$(this).next().hide();
+									$(this).attr("value","显示特征值");
+								}
+							});
+							//加入按钮
+							var $lbtn = $("<input type='button' value='隐藏表格'></input>");
 							$subdiv.append($lbtn);
 							//加入表格$ltbdiv，并在其中制表
 							var $ltbdiv = $("<div id="+resname+"Ltb"+" style='height:300px;width:600px;border:solid;overflow-y:scroll'></div>");
@@ -148,11 +166,27 @@ function getdata() {
 								}
 							});
 							
-							
 							//为右边流量图动态建立一个$rdiv,并在其中画图
 							var $rdiv = $("<div id="+resname+"R"+" style='height: 500px; width: 600px'></div>");
 							$subdiv.append($rdiv);
 							draw_spline(rsstdata2,resname,"水位信息图",resname+"R","水位");	
+							//加入按钮
+							var $rvbtn = $("<input type='button' value='隐藏特征值'></input>");
+							$subdiv.append($rvbtn);
+							//加入统计特征值的表格div并且在其中制表
+							var $rValueDiv = $("<div id="+resname+"Rvtb"+" style='height:300px;width:600px;border:solid'></div>");
+							$rvbtn.after($rValueDiv);
+							value_table(chart.xAxis[0].dataMin,chart.xAxis[0].dataMax,rsstdata2,resname+"Rvtb");
+							$rvbtn.click(function (){
+								if($(this).attr("value")=="显示特征值"){
+									$(this).next().show();
+									$(this).attr("value","隐藏特征值");
+								}
+								else {
+									$(this).next().hide();
+									$(this).attr("value","显示特征值");
+								}
+							});
 							//加入按钮
 							var $rbtn = $("<input type='button' value='隐藏表格'></input>");
 							$subdiv.append($rbtn);

@@ -7,11 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html">
 <title>main</title>
 <script src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="highcharts.js"></script> 
+<script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script> 
 <script type="text/javascript" src="json2.js"></script>
 <script type="text/javascript" src="main.js"></script>
 <script type="text/javascript" src="draw_spline.js"></script>
 <script type="text/javascript" src="spline_table.js"></script>
+<script type="text/javascript" src="value_table.js"></script>
 
 
 </head>
@@ -25,7 +26,6 @@
 	'RS_RSSCG_B':'水库调度图表'}" listKey ="key" listValue="value" label="请选择数据表" labelposition="top" >
 	</s:checkboxlist>
 	<input id="btn" type="button" value="确定" />
-	
 	
 </body>
 </html>
