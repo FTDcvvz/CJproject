@@ -8,11 +8,17 @@
 <title>main</title>
 <script src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
 <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script> 
+<script src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></script>
+<script src="http://cdn.hcharts.cn/libs/highcharts-export-csv/export-csv.js"> </script>
+<script src="https://rawgit.com/masih/draggable-legend-box/master/draggable-legend-box.js"></script>
 <script type="text/javascript" src="json2.js"></script>
 <script type="text/javascript" src="main.js"></script>
-<script type="text/javascript" src="draw_spline.js"></script>
 <script type="text/javascript" src="spline_table.js"></script>
 <script type="text/javascript" src="value_table.js"></script>
+<script type="text/javascript" src="RSST_spline.js"></script>
+<script type="text/javascript" src="draw_spline.js"></script>
+<script type="text/javascript" src="main_column.js"></script>
+<script type="text/javascript" src="draw_column.js"></script>
 
 
 </head>
@@ -25,7 +31,7 @@
 	<s:checkboxlist name="tables" list="#{'RS_RSST_R':'水库实时数据表','RS_RSZP_B':'水库水位库容曲线表',
 	'RS_RSSCG_B':'水库调度图表'}" listKey ="key" listValue="value" label="请选择数据表" labelposition="top" >
 	</s:checkboxlist>
+	<br/>
 	<input id="btn" type="button" value="确定" />
-	
 </body>
 </html>

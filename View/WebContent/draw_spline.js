@@ -10,11 +10,11 @@ function draw_spline (data,resName,subtitle,divArea,ytitle){
 			timezoneOffset:-24*60	//一天
 		},
 		lang:{
+			contextButtonTitle:'导出excel表格',
 			resetZoom:' 重置缩放 ',
 			resetZoomTitle:"重置缩放",
-			months:["一月","二月","三月","四月","五月","六月","七月","八月","九月","十月","十一月","十二月"],
-			weekdays: ["星期一", "星期二", "星期三", "星期三", "星期四", "星期五", "星期六","星期天"]
-		}
+		},
+		
 	});
 	
 	//如果副标题是"水位信息图"那么type = 'areaspline'，否则就是'spline'
@@ -41,6 +41,17 @@ function draw_spline (data,resName,subtitle,divArea,ytitle){
             	}
             }
 		},
+		exporting: {
+			filename:'数据',
+	        buttons: {
+                contextButton: {
+                	symbol: 'circle',
+                    text: ' 导出excel ',
+                    symbolSize:20,
+                    onclick:function () { this.downloadXLS(); }
+                }
+            }
+	    },
 		credits:{
 			enabled:false
 		},
@@ -63,11 +74,20 @@ function draw_spline (data,resName,subtitle,divArea,ytitle){
 			},
 		},
 		legend: {
-            align: 'right',
-            verticalAlign: 'bottom',
-            y: 10,
+			layout: 'vertical',
+            backgroundColor: 'white',
+            align: 'left',
+            verticalAlign: 'top',
+            y: 60,
+            x: 70,
+            borderWidth: 2,
+            borderRadius: 0,
+            title: {
+                text: '  '
+            },
             floating: true,
-            borderWidth:0
+            draggable: true,
+            zIndex: 20
         },
 		tooltip:{
 			headerFormat: '<b>{series.name}</b><br />',
