@@ -1,5 +1,5 @@
 /**
- * data:数据  数据格式一定要是：[{id:'yyy',name:xxx,data:abc},...]
+ * data:数据  数据格式一定要是：[{name:xxx,data:abc},...]
  * 							   其中abc格式是：abc = [[时间,数据],[时间,数据],[时间,数据],[时间,数据],...]
  * 							   
  * divarea：div区域

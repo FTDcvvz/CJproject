@@ -2,6 +2,7 @@
  * 
  */
 var chart;
+
 function draw_spline (data,resName,subtitle,divArea,ytitle){
 	//时差调整
 	Highcharts.setOptions({
@@ -15,6 +16,12 @@ function draw_spline (data,resName,subtitle,divArea,ytitle){
 			weekdays: ["星期一", "星期二", "星期三", "星期三", "星期四", "星期五", "星期六","星期天"]
 		}
 	});
+	
+	//如果副标题是"水位信息图"那么type = 'areaspline'，否则就是'spline'
+//	var chartType;
+//	if(subtitle == "水位信息图") chartType = 'areaspline';
+//	else chartType = 'spline';
+	
 	//设置图属性
 	var highchartsOption = {
 		chart:{
@@ -26,9 +33,9 @@ function draw_spline (data,resName,subtitle,divArea,ytitle){
             events:{
             	selection:function (event){
             		if(event.xAxis){
-            			value_table(event.xAxis[0].min,event.xAxis[0].max,data,divArea+"vtb");
+            			if(event.xAxis[0].max - event.xAxis[0].min >= 7 * 24 * 3600000)
+            				value_table(event.xAxis[0].min,event.xAxis[0].max,data,divArea+"vtb");
             		}
-            			
             		else
             			value_table(this.xAxis[0].dataMin,this.xAxis[0].dataMax,data,divArea+"vtb");
             	}
@@ -48,6 +55,7 @@ function draw_spline (data,resName,subtitle,divArea,ytitle){
 				text:'时间'
 			},
 			type: 'datetime',
+			minRange:7 * 24 * 3600000 //最小范围7天
 		},
 		yAxis:{
 			title:{
@@ -68,7 +76,7 @@ function draw_spline (data,resName,subtitle,divArea,ytitle){
 			crosshairs:true
 		},
 		plotOptions:{
-			spline: {
+			series: {
 				lineWidth: 3,
 				states: {
                     hover: {

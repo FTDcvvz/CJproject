@@ -132,7 +132,7 @@ function getdata() {
 							var $lvbtn = $("<input type='button' value='隐藏特征值'></input>");
 							$subdiv.append($lvbtn);
 							//加入统计特征值的表格div并且在其中制表
-							var $lValueDiv = $("<div id="+resname+"Lvtb"+" style='height:300px;width:600px;border:solid'></div>");
+							var $lValueDiv = $("<div id="+resname+"Lvtb"+" style='height:300px;width:600px;border:solid;overflow-y:scroll'></div>");
 							$lvbtn.after($lValueDiv);
 							//这里的chart变量是从draw_spline.js文件中传来的，里面定义了全局变量chart，每画一次图都会为chart赋值
 							value_table(chart.xAxis[0].dataMin,chart.xAxis[0].dataMax,rsstdata1,resname+"Lvtb");
@@ -174,7 +174,7 @@ function getdata() {
 							var $rvbtn = $("<input type='button' value='隐藏特征值'></input>");
 							$subdiv.append($rvbtn);
 							//加入统计特征值的表格div并且在其中制表
-							var $rValueDiv = $("<div id="+resname+"Rvtb"+" style='height:300px;width:600px;border:solid'></div>");
+							var $rValueDiv = $("<div id="+resname+"Rvtb"+" style='height:300px;width:600px;border:solid;overflow-y:scroll'></div>");
 							$rvbtn.after($rValueDiv);
 							value_table(chart.xAxis[0].dataMin,chart.xAxis[0].dataMax,rsstdata2,resname+"Rvtb");
 							$rvbtn.click(function (){
