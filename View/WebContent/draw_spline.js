@@ -1,46 +1,49 @@
 /**
  * 
  */
-var chart;
-
-function draw_spline (data,resName,subtitle,divArea,ytitle){
-	//时差调整
+function draw_spline (data,resName,subtitle,divArea,linewidth){
 	Highcharts.setOptions({
-		global:{
-			timezoneOffset:-24*60	//一天
-		},
 		lang:{
 			contextButtonTitle:'导出excel表格',
 			resetZoom:' 重置缩放 ',
 			resetZoomTitle:"重置缩放",
 		},
-		
 	});
 	
-	//如果副标题是"水位信息图"那么type = 'areaspline'，否则就是'spline'
-//	var chartType;
-//	if(subtitle == "水位信息图") chartType = 'areaspline';
-//	else chartType = 'spline';
+	//根据副标题是"水位信息图"还是“流量信息图”确定图的类型和y轴标题
+	var chartType = 'spline';
+	var ytitle = 'Y 轴';
+	if(subtitle == "水位信息图") 
+	{
+			chartType = 'areaspline';
+			ytitle = '水 位';
+	}
+	if(subtitle == "流量信息图") 
+	{
+			chartType = 'spline';
+			ytitle = '流 量';
+	}
 	
 	//设置图属性
 	var highchartsOption = {
 		chart:{
 			renderTo:divArea,
-			type:'spline',
+			type:chartType,
 			zoomType: 'x',
             panning: true,
             panKey: 'shift',
             events:{
             	selection:function (event){
             		if(event.xAxis){
-            			if(event.xAxis[0].max - event.xAxis[0].min >= 7 * 24 * 3600000)
-            				value_table(event.xAxis[0].min,event.xAxis[0].max,data,divArea+"vtb");
+            			value_table(event.xAxis[0].min,event.xAxis[0].max,data,divArea+"vtb");
             		}
             		else
             			value_table(this.xAxis[0].dataMin,this.xAxis[0].dataMax,data,divArea+"vtb");
             	}
             }
 		},
+		colors: ['#7cb5ec', '#434348', '#90ed7d', '#f7a35c', '#8085e9', 
+		         '#f15c80', '#e4d354', '#8085e8', '#8d4653', '#91e8e1'],
 		exporting: {
 			filename:'数据',
 	        buttons: {
@@ -66,7 +69,9 @@ function draw_spline (data,resName,subtitle,divArea,ytitle){
 				text:'时间'
 			},
 			type: 'datetime',
-			minRange:7 * 24 * 3600000 //最小范围7天
+			labels:{
+				rotation:30,
+			}
 		},
 		yAxis:{
 			title:{
@@ -91,16 +96,16 @@ function draw_spline (data,resName,subtitle,divArea,ytitle){
         },
 		tooltip:{
 			headerFormat: '<b>{series.name}</b><br />',
-			pointFormat: '{point.x:%e. %b}: {point.y}',
+			pointFormat: '{point.x:%Y/%b/%e %H:%M:%S}: {point.y}',
 			shared:false,
 			crosshairs:true
 		},
 		plotOptions:{
 			series: {
-				lineWidth: 3,
+				lineWidth: linewidth,
 				states: {
                     hover: {
-                        lineWidth:4
+                        lineWidth:linewidth
                     }
                 },
 				marker: {
@@ -112,8 +117,8 @@ function draw_spline (data,resName,subtitle,divArea,ytitle){
                 		mouseOver: function(){
                 			//将x轴的值变成Date形式
                 			var d = new Date();
-                			d.setTime(this.x);
-                			var dstr = d.toDateString();
+                			d.setTime(this.x-timeoffset);
+                			var dstr = d.toLocaleString();
                 			$("#"+divArea+"tbtable>tbody>tr").each(function(){
                 				//如果查到一样，就把这一行背景色调成高亮，并且自动滚动到这一行
                 				if(($(this).find("td").first()).text() == dstr ){
@@ -131,7 +136,7 @@ function draw_spline (data,resName,subtitle,divArea,ytitle){
                 		}
                 	}
                 }
-			}
+			}	
 		},
 		series:data
 	};

@@ -7,7 +7,10 @@
 <meta http-equiv="Content-Type" content="text/html">
 <title>main</title>
 <script src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
-<script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script> 
+<script type="text/javascript" src="highcharts.js"></script>
+<script type="text/javascript" src="highcharts.src.js"></script>
+<script type="text/javascript" src="highcharts-3d.js"></script>
+<script type="text/javascript" src="highcharts-3d.src.js"></script>
 <script src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></script>
 <script src="http://cdn.hcharts.cn/libs/highcharts-export-csv/export-csv.js"> </script>
 <script src="https://rawgit.com/masih/draggable-legend-box/master/draggable-legend-box.js"></script>
@@ -33,5 +36,16 @@
 	</s:checkboxlist>
 	<br/>
 	<input id="btn" type="button" value="确定" />
+	
+	<!-- 柱状图的配置项 -->
+	<h2>柱状图配置项</h2>
+	<s:radio list="#{'false':'平面图','true':'立体图'}" name="type" value="false"/>
+	<br/>
+																				
+	<!-- 线型图的配置项 -->
+	<h2>过程线配置项</h2>
+	<table>
+		<tr><td>线段粗细</td><td><input id="R0" type="range" min="1" max="10" value="3" /><span id="R0-value" class="value"></span></td></tr>
+	</table>
 </body>
 </html>

@@ -1,6 +1,6 @@
 package com.CJSJYDSS;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
 * 水库实施数据表

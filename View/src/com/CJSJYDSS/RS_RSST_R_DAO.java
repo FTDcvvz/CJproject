@@ -14,7 +14,7 @@ public class RS_RSST_R_DAO {
 	{
 		try{
 			String queryString = "from RS_RSST_R where " 
-					+ propertyName + "=?";
+					+ propertyName + "=?";    
 			Query queryObject = getSession().createQuery(queryString);
 			queryObject.setParameter(0, value);//0表示第一个'?'
 			return queryObject.list();

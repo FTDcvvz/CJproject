@@ -22,8 +22,8 @@ function spline_table (data,divarea,caption){
 		var $tr = $("<tr></tr>");		//tr
 		$tbody.append($tr);
 		var d = new Date();
-		d.setTime(data[0].data[i][0]);
-		var $timetd = $("<td>"+d.toDateString()+"</td>");	//时间这一列的td
+		d.setTime(data[0].data[i][0]-timeoffset);
+		var $timetd = $("<td>"+d.toLocaleString()+"</td>");	//时间这一列的td
 		$tr.append($timetd);
 		for(var j=0;j<data.length;j++){
 			var $td = $("<td>"+data[j].data[i][1]+"</td>"); //其他列的td

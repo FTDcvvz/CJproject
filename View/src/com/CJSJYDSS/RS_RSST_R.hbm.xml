@@ -4,16 +4,14 @@
 <!-- Generated 2016-3-30 21:49:12 by Hibernate Tools 3.5.0.Final -->
 <hibernate-mapping>
  <class name="com.CJSJYDSS.RS_RSST_R" table="RS_RSST_R">
- 
-  <composite-id>
+  <composite-id mapped="false" unsaved-value="undefined">
    <key-property name="resCode" type="string">
     <column length="8" name="RSCD"/>
    </key-property>
-   <key-property name="time">
+   <key-property name="time" type="java.util.Date">
     <column name="TM"/>
    </key-property>
   </composite-id>
-  
   <property generated="never" lazy="false" name="inQ" type="double">
    <column name="INQ"/>
   </property>

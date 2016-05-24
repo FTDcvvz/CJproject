@@ -10,7 +10,6 @@
  */
 
 function RSST_spline (resname){
-	
 	//为RSST表中的水库动态建立一个$subdiv。加入到$div中
 	var $subdiv = $("<div style='border:solid'></div>");
 	$("#RSSTdiv").append($subdiv);
@@ -18,7 +17,7 @@ function RSST_spline (resname){
 	//为左边流量图动态建立一个$ldiv，并在其中画图
 	var $ldiv = $("<div id="+resname+"L"+" style='height: 500px; width: 600px'></div>");
 	$subdiv.append($ldiv);
-	draw_spline(rsstdata1,resname,"流量信息图",resname+"L","流量");
+	draw_spline(rsstdata1,resname,"流量信息图",resname+"L",LINEWIDTH);
 	//加入按钮
 	var $lvbtn = $("<input type='button' value='隐藏特征值'></input>");
 	$subdiv.append($lvbtn);
@@ -60,7 +59,7 @@ function RSST_spline (resname){
 	//为右边流量图动态建立一个$rdiv,并在其中画图
 	var $rdiv = $("<div id="+resname+"R"+" style='height: 500px; width: 600px'></div>");
 	$subdiv.append($rdiv);
-	draw_spline(rsstdata2,resname,"水位信息图",resname+"R","水位");	
+	draw_spline(rsstdata2,resname,"水位信息图",resname+"R",LINEWIDTH);	
 	//加入按钮
 	var $rvbtn = $("<input type='button' value='隐藏特征值'></input>");
 	$subdiv.append($rvbtn);

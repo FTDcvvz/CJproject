@@ -1,11 +1,6 @@
 /**
  * xMin xMax ：x轴（时间轴）最小值、最大值
  */
-var max = [];
-var min = [];
-var avg = [];
-var total = [];   //最大值、最小值、平均值、累计值
-
 function setValue (xMin,xMax,data){
 	for(var i=0;i<data.length;i++){
 		var tmpMax =0 ,tmpMin = 1000000 ,tmpAvg,tmpTotal = 0;
@@ -27,8 +22,8 @@ function setValue (xMin,xMax,data){
 		tmpTotal = tmpTotal.toFixed(3);
 		tmpAvg = (tmpTotal/j).toFixed(3);	//	保留小数点后三位小数（IE5.5+）
 		
-		max[i] = tmpMax;
-		min[i] = tmpMin;
+		max[i] = tmpMax.toFixed(3);
+		min[i] = tmpMin.toFixed(3);
 		avg[i] = tmpAvg;
 		total[i] = tmpTotal;
 	}
@@ -40,9 +35,10 @@ function value_table (xMin,xMax,data,divArea){
 	
 	var d1 = new Date();
 	var d2 = new Date();
-	d1.setTime(xMin);
-	d2.setTime(xMax);
-	var $table = $("<table><caption>当前时段："+d1.toDateString()+"--"+d2.toDateString()+"</caption></table>");
+	d1.setTime(xMin-timeoffset);
+	d2.setTime(xMax-timeoffset);
+	var $table = $("<table><caption>当前时段："+d1.toLocaleString()+" -- "+
+			d2.toLocaleString()+"</caption></table>");
 	//先把当前区域的表格移除
 	$("#"+divArea+">table").remove();
 	
