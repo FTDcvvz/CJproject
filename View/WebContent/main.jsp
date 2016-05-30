@@ -22,6 +22,8 @@
 <script type="text/javascript" src="draw_spline.js"></script>
 <script type="text/javascript" src="main_column.js"></script>
 <script type="text/javascript" src="draw_column.js"></script>
+<script type="text/javascript" src="main_pie.js"></script>
+<script type="text/javascript" src="draw_pie.js"></script>
 
 
 </head>
@@ -47,5 +49,6 @@
 	<table>
 		<tr><td>线段粗细</td><td><input id="R0" type="range" min="1" max="10" value="3" /><span id="R0-value" class="value"></span></td></tr>
 	</table>
+
 </body>
 </html>

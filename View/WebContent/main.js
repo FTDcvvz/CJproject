@@ -44,6 +44,7 @@ var rsstdata2 =[{     //水位数据表
 	data:twz
 }];
 
+var dataforpie = [];         //提供给饼状图的数据
 ///////////////////////////////////////////////////////////////
 function showValues(value) {
     $('#R0-value').html(value);
@@ -164,7 +165,9 @@ function getdata() {
 							for(var j=0;j<tmp.length;j++){
 								//将时间字符串转换为highcharts能分析的UTCDate(1970 年 1 月 1 日至今的毫秒数)
 								var str = tmp[j].time;
+								//alert(str);
 								var UTCdate = Date.parse(str);
+								
 								//alert(UTCdate);
 								//存储水库i的数据
 								var arr =[UTCdate,tmp[j].inQ];
@@ -183,12 +186,15 @@ function getdata() {
 								/**
 								 * 根据所获取的数据绘图和表
 								 */
-							//RSST_spline(resname);				//一次一个水库
-							main_column(resname,"RSSTdiv");
+							//RSST_spline(resname);				//一次画一个水库
+							//main_column(resname,"RSSTdiv");
+							
 						}
 					}
 				}//回调函数执行完毕
 			});//ajax结束
+			main_pie("RSSTdiv"); 		//和画曲线图和柱状图不一样，饼状图是对水库的综合作图，
+												//所以并不是一次画一个水库的图，而是一次画一个表的图
 		}
 		
 		//选择了水库水位库容曲线表
